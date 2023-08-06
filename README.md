@@ -1,5 +1,15 @@
 # MortgageCalculator
 
+## About
+Example mortgage calculator built with angular and RxJS with a focus on testing.
+
+## Stackblitz
+You can play around with the application in your browser by accessing it through stackblitz.
+<br/>
+https://stackblitz.com/github/szymonstuszek/mortgage-calculator
+
+
+## Info
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.8.
 
 ## Development server
