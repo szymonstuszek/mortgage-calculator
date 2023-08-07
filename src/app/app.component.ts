@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mortgage-calculator';
-  value = '';
+  mortgageAmount = 0;
+
+  amountChanged(event: any): void {
+    this.mortgageAmount = event.target.value;
+  }
+  
 }

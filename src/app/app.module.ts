@@ -13,11 +13,13 @@ import {MatButtonModule} from '@angular/material/button';
 import {FormsModule} from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
+import { MortgageOffersComponent } from './mortgage-offers/mortgage-offers.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MortgageOffersComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,38 +8,44 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MortgageOffersComponent } from './mortgage-offers/mortgage-offers.component';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [
-      RouterTestingModule, 
-      MatFormFieldModule, 
-      MatInputModule, 
-      FormsModule, 
-      MatButtonModule, 
-      MatIconModule, 
-      MatCardModule,
-      BrowserAnimationsModule
-    ],
-    declarations: [AppComponent]
-  }));
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent;
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'mortgage-calculator'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('mortgage-calculator');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule, 
+        MatFormFieldModule, 
+        MatInputModule, 
+        FormsModule, 
+        MatButtonModule, 
+        MatIconModule, 
+        MatCardModule,
+        BrowserAnimationsModule
+      ],
+      declarations: [AppComponent, MortgageOffersComponent]
+    });
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('span')?.textContent).toContain('mortgage-calculator app is running!');
+  });
+
+  it('should create the component', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should have mortgageAmount set to 0 before any changes are made', () => {
+    expect(component.mortgageAmount).toBe(0);
+  });
+
+  it('should set the correct mortgageAmount after change event is triggered on input', () => {
+    const debugElement = fixture.debugElement.query(By.css('[name="amountInput"]'));
+    debugElement.triggerEventHandler('change', {target: {value: 500}});
+    expect(component.mortgageAmount).toBe(500);
   });
 });
