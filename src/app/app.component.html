@@ -8,7 +8,7 @@
         name="amountInput" 
         matInput 
         type="number" 
-        (change)="amountChanged($any($event))">
+        (change)="amountChanged($event)">
         <button *ngIf="mortgageAmount" matSuffix mat-icon-button aria-label="Clear" (click)="mortgageAmount=0">
           <mat-icon>close</mat-icon>
         </button>
